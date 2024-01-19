@@ -66,10 +66,13 @@
         return this.ints;
       }
       getEvens() {
-        const evens = this.ints.filter(even => even % 2 === 0);
+        const evens = this.ints.filter(num => num % 2 === 0);
         return evens;
       }
-      getNegatives() {}
+      getNegatives() {
+        const negatives = this.ints.filter(num => num < 0);
+        return negatives;
+      }
       getAllSquared() {}
       pop() {}
       push() {}

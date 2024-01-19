@@ -59,11 +59,15 @@
       // ❗ WARNING: except for `getAllReversed`, methods must respect the order of the integers
       // ❗ WARNING: note that none of the methods actually mutate the `ints` property
       constructor(...int) {
-        let ints = [int];
-        console.log('Ints', ints);
+        this.ints = int;
+        console.log('Ints', this.ints);
       }
-      getAll() {}
-      getEvens() {}
+      getAll() {
+        return this.ints;
+      }
+      getEvens() {
+        return ints.map()
+      }
       getNegatives() {}
       getAllSquared() {}
       pop() {}

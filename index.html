@@ -60,7 +60,6 @@
       // ❗ WARNING: note that none of the methods actually mutate the `ints` property
       constructor(...int) {
         this.ints = int;
-        console.log('Ints', this.ints);
       }
       getAll() {
         return this.ints;
@@ -73,7 +72,10 @@
         const negatives = this.ints.filter(num => num < 0);
         return negatives;
       }
-      getAllSquared() {}
+      getAllSquared() {
+        const squared = this.ints.map(num => num ** 2);
+        return squared;
+      }
       pop() {}
       push() {}
       getEveryNth() {}

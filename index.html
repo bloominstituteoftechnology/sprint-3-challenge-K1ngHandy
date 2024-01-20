@@ -80,7 +80,10 @@
         const pop = this.ints.pop();
         return pop;
       }
-      push() {}
+      push(integer) {
+        const push = this.ints.push(integer);
+        return this.ints;
+      }
       getEveryNth() {}
       getAllReversed() {}
     }

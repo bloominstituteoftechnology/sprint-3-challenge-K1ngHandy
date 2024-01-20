@@ -110,17 +110,32 @@
       //      * When disengaging the safety, return "Safety disabled!"
       // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
         constructor(numProj) {
-          this.numProj = numProj;
-          this.ammo = false;
-          this.safety = true;
-          this.maxCap = numProj;
-          this.currentCap = numProj;
+          this.ammo = numProj;
+          let safety = true;
+          let maxCap = numProj;
+
         }
         shoot(ammo, safety) {
           return (ammo > 0 && safety === false) ? 'Bang!' : 'Click!';
         }
-        reload() {}
-        toggleSafety() {}
+        reload(num) {
+          if (num < 1) {
+            return 'Error reloading!';
+          } else if (num > 0 && num > maxCap) {
+            currentCap = maxCap;
+            return `${num} projectiles left!`;
+          } else {
+            return currentCap = num;
+          }
+        }
+        toggleSafety() {
+          if (this.safety === true) {
+            return 'Safety enabled!'
+          } else {
+            this.safety = !this.safety;
+            return 'Safety disabled!';
+          }
+        }
     }
 
     // 👉 CHALLENGE 3 EBook

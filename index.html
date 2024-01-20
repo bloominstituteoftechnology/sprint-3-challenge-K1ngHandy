@@ -84,8 +84,14 @@
         const push = this.ints.push(integer);
         return this.ints;
       }
-      getEveryNth() {}
-      getAllReversed() {}
+      getEveryNth(intN) {
+        for (let i = 0; i < this.ints.length * intN; i += intN) {
+          return intN;
+        }
+      }
+      getAllReversed() {
+        return this.ints.slice().reverse();
+      }
     }
 
     // 👉 CHALLENGE 2 NerfGun

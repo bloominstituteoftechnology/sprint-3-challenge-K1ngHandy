@@ -109,7 +109,18 @@
       //      * When engaging the safety, return "Safety enabled!"
       //      * When disengaging the safety, return "Safety disabled!"
       // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
-
+        constructor(numProj) {
+          this.numProj = numProj;
+          this.ammo = false;
+          this.safety = true;
+          this.maxCap = numProj;
+          this.currentCap = numProj;
+        }
+        shoot(ammo, safety) {
+          return (ammo > 0 && safety === false) ? 'Bang!' : 'Click!';
+        }
+        reload() {}
+        toggleSafety() {}
     }
 
     // 👉 CHALLENGE 3 EBook

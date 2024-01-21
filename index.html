@@ -115,17 +115,18 @@
           let maxCap = numProj;
 
         }
-        shoot(ammo, safety) {
-          return (ammo > 0 && safety === false) ? 'Bang!' : 'Click!';
+        shoot() {
+          if (this.ammo > 0) {
+            this.safety = false;
+            this.ammo--;
+            return 'Bang!';
+          } else {
+            return 'Click!';
+          }
         }
         reload(num) {
           if (num < 1) {
             return 'Error reloading!';
-          } else if (num > 0 && num > maxCap) {
-            currentCap = maxCap;
-            return `${num} projectiles left!`;
-          } else {
-            return currentCap = num;
           }
         }
         toggleSafety() {

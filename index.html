@@ -111,30 +111,31 @@
       // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
         constructor(numProj) {
           this.ammo = numProj;
-          let safety = true;
-          let maxCap = numProj;
-
+          this.safety = true;
+          this.maxCap = numProj;
         }
         shoot() {
-          if (this.ammo > 0) {
-            this.safety = false;
-            this.ammo--;
-            return 'Bang!';
-          } else {
-            return 'Click!';
-          }
+
         }
         reload(num) {
+          // console.log('Num', num);
           if (num < 1) {
             return 'Error reloading!';
+          } else if (num > 0 && num <= this.maxCap) {
+            this.ammo = this.ammo + num;
+            return `${this.ammo} projectiles left!`;
+          } else if (num > 0 && num > this.maxCap) {
+            this.ammo = this.maxCap;
+            return `${this.ammo} projectiles left!`;
           }
         }
         toggleSafety() {
           if (this.safety === true) {
-            return 'Safety enabled!'
+            this.safety = false;
+            return 'Safety disabled!'
           } else {
-            this.safety = !this.safety;
-            return 'Safety disabled!';
+            this.safety = true;
+            return 'Safety enabled!';
           }
         }
     }
@@ -155,7 +156,45 @@
       //    ebook.next() // returns null
       // 🌟 HINT: remember about the `slice` method which strings and arrays have
       // ❗ Feel free to implement `back`, although this is not required nor graded
+      // constructor(str, numChar) {
+      //   this.str = str;
+      //   this.numChar = numChar;
+      //   this.currentPage = 0;
+      //   this.result = this.getAllPages();
+      // }
+      // next() {
+      //   if (end > this.str.length) {
+      //     return null;
+      //   }
 
+      //   const page = this.result(this.currentPage);
+      //   this.currentPage++;
+
+      //   return page;
+      // }
+
+      // getAllPages() {
+      //   const pages = [];
+      //   let page;
+      //   while ((page === this.nextPage()) !== null) {
+      //     pages.push(page);
+      //   }
+      //   return pages;
+      // }
+
+      // nextPage() {
+      //   const start = this.currentPage * this.numChar;
+      //   const end = start + this.numChar;
+
+      //   if (end > this.str.length) {
+      //     this.currentPage = 0;
+      //     return null;
+      //   }
+      //   const page = this.str.slice(start, end);
+      //   this.currentPage++;
+
+      //   return page;
+      // }
     }
 
     // 👉 CHALLENGE 4 AntFarm
@@ -190,7 +229,24 @@
       //      console.log(list) // prints ["a"]
       // 👉 HINT: if you are not feeling confident with map and filter, solve the problem with for loops,
       //      and with the piece of mind of all tests passing, refactor to use map/filter
+      constructor(...ants) {
+        this.ant = ants.map(name => ({name, health: 100}));
+      }
+      work() {
+        
+      }
+      feed(antName) {
+        let fed = false;
 
+        this.ant = this.ant = this.ant.map(ant => {
+          if (ant.name === antName) {
+            fed = true;
+            return {...ant, health: ant.health + 15};
+          }
+          return ant;
+        });
+        return fed ? 'Yum!' : `${antName} not found!`;
+      }
     }
 
     // 🧪 TESTS, do not make any changes below this line ===================

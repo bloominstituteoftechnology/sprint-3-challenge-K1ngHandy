@@ -233,22 +233,37 @@
           this.ants = antStr.map((name) => ({ name, health: 100 }));
         }
         work() {
-          console.log("Length", this.ants.length);
+          // console.log("Length", this.ants.length);
           if (this.ants.length < 1) {
             return "No ants here. Did you work them to death?";
           } else {
             this.ants.health = this.ants.map((ant) => {
-              console.log(ant.health);
+              // console.log(ant.health);
               if (ant.health < 1) {
               } else {
               }
               ant.health -= 20;
-              // console.log(this.ants);
               ant.health > 0 ? `${this.ants.length} ants starting work!` : null;
             });
           }
         }
-        feed(antName) {}
+        feed(antName) {
+          console.log(antName);
+          const feed = this.ants.filter(function (ant) {
+            if (ant.name === antName) {
+              console.log("Same", antName);
+              return antName;
+            }
+          });
+        }
+        //  {
+
+        // if (antName === this.ants.name) {
+        //   console.log("Hungry:", antName);
+        // }
+        // };
+        // console.log("Feed", feed);
+        // }
       }
 
       // 🧪 TESTS, do not make any changes below this line ===================

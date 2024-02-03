@@ -1,0 +1,15 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "workbench.startupEditor": "none",
+  "workbench.hover.delay": 2100,
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "Solarized Dark",
+  "workbench.colorTheme": "Solarized Light",
+  "workbench.preferredLightColorTheme": "Solarized Light",
+  "terminal.explorerKind": "both",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.enableBell": false,
+  "notebook.output.wordWrap": true,
+  "keyboard.touchbar.enabled": false
+}

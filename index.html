@@ -248,23 +248,17 @@
           }
         }
         feed(antName) {
-          // console.log(antName);
           const feed = this.ants.filter(function (ant) {
             if (ant.name === antName) {
               // console.log("Same", antName);
               ant.health += 15;
-              return ant;
+              return "Yum!";
+            } else {
+              return `${antName} not found!`;
             }
           });
+          feed;
         }
-        //  {
-
-        // if (antName === this.ants.name) {
-        //   console.log("Hungry:", antName);
-        // }
-        // };
-        // console.log("Feed", feed);
-        // }
       }
 
       // 🧪 TESTS, do not make any changes below this line ===================

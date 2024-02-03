@@ -248,11 +248,12 @@
           }
         }
         feed(antName) {
-          console.log(antName);
+          // console.log(antName);
           const feed = this.ants.filter(function (ant) {
             if (ant.name === antName) {
-              console.log("Same", antName);
-              return antName;
+              // console.log("Same", antName);
+              ant.health += 15;
+              return ant;
             }
           });
         }

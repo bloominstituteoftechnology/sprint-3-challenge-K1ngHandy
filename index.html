@@ -238,9 +238,8 @@
             return "No ants here. Did you work them to death?";
           } else {
             this.ants.health = this.ants.map((ant) => {
-              // console.log(ant.health);
               if (ant.health < 1) {
-                console.log(ant.name, ant.health);
+                // console.log(ant.name, ant.health);
               } else {
                 ant.health -= 20;
                 return ant;
@@ -251,9 +250,8 @@
           }
         }
         feed(antName) {
-          const feed = this.ants.filter(function (ant) {
+          let feed = this.ants.filter((ant) => {
             if (ant.name === antName) {
-              // console.log("Same", antName);
               ant.health += 15;
               return "Yum!";
             } else {

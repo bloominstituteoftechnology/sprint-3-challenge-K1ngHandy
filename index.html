@@ -232,20 +232,18 @@
         constructor(...antStr) {
           this.ants = antStr.map((name) => ({ name, health: 100 }));
         }
+
         work() {
-          if (this.ants.length < 1) {
-            return "No ants here. Did you work them to death?";
-          } else {
-            this.ants.health = this.ants.map((ant) => {
-              if (ant.health < 1) {
-              } else {
-                ant.health -= 20;
-                return ant;
-              }
+          this.ants = this.ants
+            .map((ant) => {
               ant.health -= 20;
-              ant.health > 0 ? `${this.ants.length} ants starting work!` : null;
-            });
-          }
+              return ant;
+            })
+            .filter((ant) => ant.health > 0);
+
+          return this.ants.length < 1
+            ? "No ants here. Did you work them to death?"
+            : `${this.ants.length} ants starting work!`;
         }
 
         feed(antName) {

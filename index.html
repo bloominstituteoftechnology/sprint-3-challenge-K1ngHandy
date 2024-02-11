@@ -162,39 +162,34 @@
         //    ebook.next() // returns null
         // 🌟 HINT: remember about the `slice` method which strings and arrays have
         // ❗ Feel free to implement `back`, although this is not required nor graded
-        // constructor(str, numChar) {
-        //   this.str = str;
-        //   this.numChar = numChar;
-        //   this.currentPage = 0;
-        //   this.result = this.getAllPages();
-        // }
-        // next() {
-        //   if (end > this.str.length) {
-        //     return null;
-        //   }
-        //   const page = this.result(this.currentPage);
-        //   this.currentPage++;
-        //   return page;
-        // }
-        // getAllPages() {
-        //   const pages = [];
-        //   let page;
-        //   while ((page === this.nextPage()) !== null) {
-        //     pages.push(page);
-        //   }
-        //   return pages;
-        // }
-        // nextPage() {
-        //   const start = this.currentPage * this.numChar;
-        //   const end = start + this.numChar;
-        //   if (end > this.str.length) {
-        //     this.currentPage = 0;
-        //     return null;
-        //   }
-        //   const page = this.str.slice(start, end);
-        //   this.currentPage++;
-        //   return page;
-        // }
+        constructor(str, numChar) {
+          this.str = str;
+          this.numChar = numChar;
+          this.currentPage = 0;
+        }
+
+        next() {
+          const start = this.currentPage * this.numChar; // sets starting index in slice as pages are turned
+          const end = start + this.numChar;
+          if (start >= this.str.length) {
+            return null;
+          }
+          this.currentPage++;
+          return this.str.slice(start, Math.min(end, this.str.length));
+        }
+
+        getAllPages() {
+          const pages = [];
+          let page;
+
+          this.currentPage = 0;
+
+          while ((page = this.next()) !== null) {
+            pages.push(page);
+          }
+
+          return pages;
+        }
       }
 
       // 👉 CHALLENGE 4 AntFarm
@@ -234,6 +229,10 @@
         }
 
         work() {
+          if (this.ants.length < 1) {
+            ("No ants here. Did you work them to death?");
+          }
+
           this.ants = this.ants
             .map((ant) => {
               ant.health -= 20;

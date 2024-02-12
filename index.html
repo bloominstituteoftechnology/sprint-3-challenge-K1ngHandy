@@ -110,39 +110,33 @@
         //      * When disengaging the safety, return "Safety disabled!"
         // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
         constructor(numProj) {
-          this.ammo = 0;
+          this.ammo = numProj; // preloads ammo with number of projectiles per instance
           this.safety = true;
-          this.maxCap = numProj;
+          this.maxCap = numProj; // sets max capacity to number of projectiles per instance
         }
+
         shoot() {
-          if (this.ammo < 1) {
-            return "Click!";
+          if (!this.safety && this.ammo > 0) {
+            // checks for ammo & if safety is enabled
+            this.ammo--;
+            return "Bang!";
           } else {
-            if (this.safety === true) {
-              this.toggleSafety();
-            }
+            return "Click!";
           }
         }
-        reload(num) {
-          // console.log('Num', num);
-          if (num < 1) {
-            return "Error reloading!";
-          } else if (num > 0 && num <= this.maxCap) {
-            this.ammo = this.ammo + num;
-            return `${this.ammo} projectiles left!`;
-          } else if (num > 0 && num > this.maxCap) {
-            this.ammo = this.maxCap;
-            return `${this.ammo} projectiles left!`;
+
+        reload(numProj) {
+          if (typeof numProj !== "number" || numProj <= 0) {
+            return "Error reloading!"; // returns error if no projectiles left
           }
+
+          this.ammo = Math.min(this.ammo + numProj, this.maxCap);
+          return `${this.ammo} projectiles left!`;
         }
+
         toggleSafety() {
-          if (this.safety === true) {
-            this.safety = false;
-            return "Safety disabled!";
-          } else if (this.safety === false) {
-            this.safety = true;
-            return "Safety enabled!";
-          }
+          this.safety = !this.safety;
+          return this.safety ? "Safety enabled!" : "Safety disabled!";
         }
       }
 

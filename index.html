@@ -84,10 +84,13 @@
           const push = this.ints.push(integer);
           return this.ints;
         }
-        getEveryNth(intN) {
-          for (let i = 0; i < this.ints.length * intN; i += intN) {
-            return intN;
+        getEveryNth(n) {
+          const res = [];
+
+          for (let i = 0; i < this.ints.length; i += n) {
+            res.push(this.ints[i]);
           }
+          return res;
         }
         getAllReversed() {
           return this.ints.slice().reverse();

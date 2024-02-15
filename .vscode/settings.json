@@ -5,7 +5,7 @@
   "workbench.hover.delay": 2100,
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "Solarized Dark",
-  "workbench.colorTheme": "Solarized Light",
+  "workbench.colorTheme": "Solarized Dark",
   "workbench.preferredLightColorTheme": "Solarized Light",
   "terminal.explorerKind": "both",
   "terminal.integrated.cursorBlinking": true,

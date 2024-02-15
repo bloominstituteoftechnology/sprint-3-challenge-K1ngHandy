@@ -226,20 +226,20 @@
         }
 
         work() {
-          if (this.ants.length < 1) {
+          const workingAnts = this.ants.length;
+
+          if (workingAnts === 0) {
             return "No ants here. Did you work them to death?";
+          } else {
+            this.ants = this.ants
+              .map((ant) => {
+                ant.health -= 20;
+                return ant;
+              })
+              .filter((ant) => ant.health > 0);
+
+            return `${workingAnts} ants starting work!`;
           }
-
-          this.ants = this.ants
-            .map((ant) => {
-              ant.health -= 20;
-              return ant;
-            })
-            .filter((ant) => ant.health > 0);
-
-          return this.ants.length < 1
-            ? "No ants here. Did you work them to death?"
-            : `${this.ants.length} ants starting work!`;
         }
 
         feed(antName) {
